@@ -15,6 +15,8 @@
 	<field name="CODIGO" class="java.lang.String"/>
 	<field name="NOMBRE" class="java.lang.String"/>
 	<field name="CATEGORIA" class="java.lang.String"/>
+	<field name="PRECIO" class="java.lang.Integer"/>
+	<field name="FECHA VENCIMIENTO" class="java.sql.Date"/>
 	<title>
 		<band height="76" splitType="Stretch">
 			<image>
@@ -37,23 +39,23 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="33" splitType="Stretch">
+		<band height="64" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="4" width="170" height="18" uuid="a5acf104-b009-4ef0-8085-08cc61ed9b50"/>
+				<reportElement x="-10" y="4" width="100" height="18" uuid="a5acf104-b009-4ef0-8085-08cc61ed9b50"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Codigo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="180" y="4" width="180" height="18" uuid="e5555baf-ebd5-4478-a273-6a28b0cfb3a6"/>
+				<reportElement x="100" y="4" width="120" height="18" uuid="e5555baf-ebd5-4478-a273-6a28b0cfb3a6"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="380" y="4" width="174" height="18" uuid="f8bcb13c-9240-49f8-aa3c-b35e645932b5"/>
+				<reportElement x="340" y="4" width="110" height="18" uuid="f8bcb13c-9240-49f8-aa3c-b35e645932b5"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -65,29 +67,50 @@
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
-		</band>
-	</columnHeader>
-	<detail>
-		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="4" width="100" height="18" uuid="230696d4-25d0-4575-bf9d-615fc6b09aa2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="4" width="110" height="18" uuid="32a98a2e-4f02-4ccc-9e18-3cc6644ac6ff"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Vencimiento]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="340" y="29" width="110" height="20" uuid="4d066a47-2582-4591-b833-ca0fc6ec03c1"/>
+				<textFieldExpression><![CDATA[$F{CATEGORIA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-10" y="29" width="100" height="20" uuid="cc6c8d40-63f9-48c9-8779-d40073be5ba5"/>
+				<textFieldExpression><![CDATA[$F{CODIGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="30" width="120" height="18" uuid="096ed5ca-8352-40fd-a4ac-7c649ce6d1b6"/>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="29" width="100" height="18" uuid="a079453a-b35e-4dfd-9878-cc7cf4b8e8fe"/>
+				<textFieldExpression><![CDATA[$F{PRECIO}]]></textFieldExpression>
+			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="23" width="555" height="1" uuid="39f48c34-b6ee-47f7-8876-c3aaee1eb021"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="48" width="555" height="1" uuid="39f48c34-b6ee-47f7-8876-c3aaee1eb021"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="0" y="0" width="170" height="20" uuid="cc6c8d40-63f9-48c9-8779-d40073be5ba5"/>
-				<textFieldExpression><![CDATA[$F{CODIGO}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="180" y="0" width="180" height="20" uuid="096ed5ca-8352-40fd-a4ac-7c649ce6d1b6"/>
-				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="380" y="0" width="174" height="20" uuid="4d066a47-2582-4591-b833-ca0fc6ec03c1"/>
-				<textFieldExpression><![CDATA[$F{CATEGORIA}]]></textFieldExpression>
+				<reportElement x="460" y="29" width="110" height="18" uuid="b1e47db5-580d-46d7-872d-34bd0e05cab3"/>
+				<textFieldExpression><![CDATA[$F{FECHA VENCIMIENTO}]]></textFieldExpression>
 			</textField>
 		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch"/>
 	</detail>
 	<pageFooter>
 		<band height="20" splitType="Stretch">

@@ -12,16 +12,6 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<background>
-		<band height="11" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="-2" y="10" width="555" height="1" uuid="71ea44de-7a93-4d4f-a52c-4c16cd00015b"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-		</band>
-	</background>
 	<title>
 		<band height="70" splitType="Stretch">
 			<image>
@@ -44,40 +34,52 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="48" splitType="Stretch">
+		<band height="60" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="b862e2eb-eaf9-476e-9db5-57ed083f99e6"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="20" width="555" height="1" uuid="b862e2eb-eaf9-476e-9db5-57ed083f99e6"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="0" y="9" width="120" height="20" uuid="4bf5e973-e44a-4d42-b5d0-09d95a8febaf"/>
+				<reportElement x="-11" y="-2" width="100" height="20" uuid="4bf5e973-e44a-4d42-b5d0-09d95a8febaf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Static Text]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="140" y="9" width="100" height="20" uuid="552f5480-6ff4-487e-9415-dc464c0ca992"/>
+				<reportElement x="100" y="-2" width="100" height="20" uuid="552f5480-6ff4-487e-9415-dc464c0ca992"/>
 				<text><![CDATA[Static Text]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="260" y="9" width="100" height="20" uuid="32d00444-2524-4fa6-a3fa-54060d361863"/>
+				<reportElement x="210" y="-2" width="110" height="20" uuid="32d00444-2524-4fa6-a3fa-54060d361863"/>
 				<text><![CDATA[Static Text]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="330" y="-2" width="120" height="20" uuid="0a1671ce-1081-49a2-aaee-b949c6ce18d1"/>
+				<text><![CDATA[Static Text]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="-2" width="110" height="20" uuid="e77db019-bcdf-40ca-ad1a-51d6e75cb6b0"/>
+				<text><![CDATA[Static Text]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="-11" y="24" width="100" height="20" uuid="a41472b9-6b29-44a0-85d7-c9fda6698fc1"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="16" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="39f48c34-b6ee-47f7-8876-c3aaee1eb021"/>
+				<reportElement positionType="FixRelativeToBottom" x="-2" y="10" width="555" height="1" uuid="39f48c34-b6ee-47f7-8876-c3aaee1eb021"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
 		<band height="20" splitType="Stretch">
 			<textField>
