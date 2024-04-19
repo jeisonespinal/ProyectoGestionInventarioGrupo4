@@ -1,5 +1,6 @@
 package hn.lacolonia.views.categorias;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -11,6 +12,10 @@ import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
+import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
+import com.vaadin.flow.component.grid.contextmenu.GridMenuItem;
+import com.vaadin.flow.component.grid.contextmenu.GridSubMenu;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -34,14 +39,20 @@ import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 import hn.lacolonia.controller.InteractorCategorias;
 import hn.lacolonia.controller.InteractorImplCategorias;
 import hn.lacolonia.data.Categoria;
+import hn.lacolonia.data.Producto;
+import hn.lacolonia.data.ProductosReport;
 import hn.lacolonia.data.Proveedor;
 import hn.lacolonia.data.SamplePerson;
+import hn.lacolonia.data.CategoriasReport;
+import hn.lacolonia.services.ReportGenerator;
 import hn.lacolonia.views.MainLayout;
 import hn.lacolonia.views.productos.ProductosView;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
@@ -105,6 +116,20 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
                 UI.getCurrent().navigate(CategoriasView.class);
             }
         });
+        
+        GridContextMenu<Categoria> menu = grid.addContextMenu();
+        GridMenuItem<Categoria> assign = menu.addItem("Exportar");
+        GridMenuItem<Categoria> menueliminar = menu.addItem("Eliminar");
+        menueliminar.addMenuItemClickListener( e -> {
+        });
+        
+        //assign.addComponentAsFirst(createIcon(VaadinIcon.FILE_REFRESH));
+        
+        GridSubMenu<Categoria> exportSubMenu = assign.getSubMenu();
+        exportSubMenu.addItem("Portable Document Format (.pdf)", event -> {
+        	Notification.show("Generando reporte PDF...");
+        	generarReporte();
+        });
 
         controlador.consultarCategorias();
         controlador.consultarProveedores();
@@ -158,6 +183,41 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
                  UI.getCurrent().navigate(ProductosView.class);
         	}
         });
+    }
+    
+    private void generarReporte() {
+    	ReportGenerator generador = new ReportGenerator();
+    	CategoriasReport datasource = new CategoriasReport();
+    	datasource.setCategorias(elementos);
+    	Map<String, Object> parameters = new HashMap<>();
+    	if(elementos.size() % 2 == 0) {
+    		parameters.put("FIRMA", "firma1.png");
+    	}else {
+    		parameters.put("FIRMA", "firma2.png");
+    	}
+    	
+    	boolean generado = generador.generarReportePDF("reporte_categorias", parameters, datasource);
+    	if(generado) {
+    		String ubicacion = generador.getReportPath();
+    		Anchor url = new Anchor(ubicacion, "Abrir Reporte");
+    		url.setTarget("_blank");
+    		
+    		Notification notification = new Notification(url);
+    	    notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+    	    notification.setPosition(Position.MIDDLE);
+    	    notification.setDuration(15000);
+    	    notification.open();
+    	}else {
+    		mostrarMensajeError("Ocurrió un problema al generar el reporte:(");
+    	}
+	}
+
+	private Component createIcon(VaadinIcon vaadinIcon) {
+        Icon icon = vaadinIcon.create();
+        icon.getStyle().set("color", "var(--lumo-secondary-text-color)")
+                .set("margin-inline-end", "var(--lumo-space-s")
+                .set("padding", "var(--lumo-space-xs");
+        return icon;
     }
 
     @Override
