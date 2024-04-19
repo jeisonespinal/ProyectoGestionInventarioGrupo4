@@ -54,7 +54,10 @@ import org.springframework.data.jpa.domain.Specification;
 @PageTitle("Proveedores")
 @Route(value = "proveedores", layout = MainLayout.class)
 @Uses(Icon.class)
-public class ProveedoresView extends Div implements ViewModelProveedores {
+public class ProveedoresView extends Div implements /*BeforeEnterObserver*/ ViewModelProveedores {
+
+	/*private final String SUPPLIER_IDPROVEEDOR = "idproveedor";
+    private final String SUPPLIER_EDIT_ROUTE_TEMPLATE = "proveedores/%s/edit";*/
     
     private Grid<Proveedor> grid = new Grid<>(Proveedor.class, false);
     
@@ -130,10 +133,9 @@ public class ProveedoresView extends Div implements ViewModelProveedores {
                 onSearch.run();
             });
             
-            
             Button searchBtn = new Button("Buscar", new Icon(VaadinIcon.SEARCH));
             searchBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-            searchBtn.setId("btn_guardar");
+            searchBtn.setId("btn_buscar");
             searchBtn.addClickListener(e -> onSearch.run());
             
             Div actions = new Div(searchBtn, cancelBtn);
@@ -187,67 +189,12 @@ public class ProveedoresView extends Div implements ViewModelProveedores {
             String telefonoFilter = telefono.getValue().toLowerCase();
             return proveedor.getTelefono().toLowerCase().contains(telefonoFilter);
         }
-        
+
 		@Override
-        public Predicate toPredicate(Root<Proveedor> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-            List<Predicate> predicates = new ArrayList<>();
-
-            if (idproveedor != null) {
-                String idString = String.valueOf(idproveedor);
-                Predicate idMatch = criteriaBuilder.like(
-                    criteriaBuilder.lower(root.get("idproveedor").as(String.class)),
-                    idString + "%"
-                );
-                predicates.add(idMatch);
-            }
-            
-            if (!nombre.isEmpty()) {
-                String lowerCaseFilter = nombre.getValue().toLowerCase();
-                Predicate nameMatch = criteriaBuilder.like(criteriaBuilder.lower(root.get("firstName")),
-                        lowerCaseFilter + "%");
-                predicates.add(nameMatch);
-            }
-            
-            if (!direccion.isEmpty()) {
-                String lowerCaseFilter = direccion.getValue().toLowerCase();
-                Predicate direccionMatch = criteriaBuilder.like(criteriaBuilder.lower(root.get("firstName")),
-                        lowerCaseFilter + "%");
-                predicates.add(direccionMatch);
-            }
-            
-            if (!telefono.isEmpty()) {
-                String databaseColumn = "telefono";
-                String ignore = "- ()";
-
-                String lowerCaseFilter = ignoreCharacters(ignore, telefono.getValue().toLowerCase());
-                Predicate telefonoMatch = criteriaBuilder.like(
-                        ignoreCharacters(ignore, criteriaBuilder, criteriaBuilder.lower(root.get(databaseColumn))),
-                        "%" + lowerCaseFilter + "%");
-                predicates.add(telefonoMatch);
-            }
-            
-            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
-            
-        }
-		
-        private String ignoreCharacters(String characters, String in) {
-            String result = in;
-            for (int i = 0; i < characters.length(); i++) {
-                result = result.replace("" + characters.charAt(i), "");
-            }
-            return result;
-        }
-        
-        private Expression<String> ignoreCharacters(String characters, CriteriaBuilder criteriaBuilder,
-                Expression<String> inExpression) {
-            Expression<String> expression = inExpression;
-            for (int i = 0; i < characters.length(); i++) {
-                expression = criteriaBuilder.function("replace", String.class, expression,
-                        criteriaBuilder.literal(characters.charAt(i)), criteriaBuilder.literal(""));
-            }
-            return expression;
-        }
-
+		public Predicate toPredicate(Root<Proveedor> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+			// TODO Auto-generated method stub
+			return null;
+		}
     }
     
     private Component createGrid() {
@@ -279,5 +226,4 @@ public class ProveedoresView extends Div implements ViewModelProveedores {
         grid.getDataProvider().refreshAll();
         this.controlador.consultarProveedores();
     }
-
 }
