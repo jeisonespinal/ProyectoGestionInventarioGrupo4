@@ -12,6 +12,11 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="NOMBRE" class="java.lang.String"/>
+	<field name="DESCRIPCION" class="java.lang.String"/>
+	<field name="ESTADO" class="java.lang.String"/>
+	<field name="PROVEEDOR" class="java.lang.String"/>
 	<title>
 		<band height="70" splitType="Stretch">
 			<image>
@@ -24,8 +29,10 @@
 				<text><![CDATA[Listado de Categorias]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="63" y="39" width="356" height="22" forecolor="#F7EC19" uuid="a49f9e55-5e6d-4cee-918b-ed362f3141a0"/>
-				<textElement textAlignment="Right"/>
+				<reportElement style="SubTitle" x="63" y="39" width="356" height="22" forecolor="#64FA3E" uuid="a49f9e55-5e6d-4cee-918b-ed362f3141a0"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
 				<text><![CDATA[Categorias registradas en el sistema]]></text>
 			</staticText>
 		</band>
@@ -34,7 +41,7 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="60" splitType="Stretch">
+		<band height="66" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="20" width="555" height="1" uuid="b862e2eb-eaf9-476e-9db5-57ed083f99e6"/>
 				<graphicElement>
@@ -46,39 +53,66 @@
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Static Text]]></text>
+				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="-2" width="100" height="20" uuid="552f5480-6ff4-487e-9415-dc464c0ca992"/>
-				<text><![CDATA[Static Text]]></text>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="210" y="-2" width="110" height="20" uuid="32d00444-2524-4fa6-a3fa-54060d361863"/>
-				<text><![CDATA[Static Text]]></text>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="330" y="-2" width="120" height="20" uuid="0a1671ce-1081-49a2-aaee-b949c6ce18d1"/>
-				<text><![CDATA[Static Text]]></text>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="460" y="-2" width="110" height="20" uuid="e77db019-bcdf-40ca-ad1a-51d6e75cb6b0"/>
-				<text><![CDATA[Static Text]]></text>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="-11" y="24" width="100" height="20" uuid="a41472b9-6b29-44a0-85d7-c9fda6698fc1"/>
-				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
 			</textField>
-		</band>
-	</columnHeader>
-	<detail>
-		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="24" width="100" height="20" uuid="690327de-bb9e-4df1-8290-cd3fbfdea055"/>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="25" width="110" height="18" uuid="d3a72ee5-235e-456d-b617-826ad68be455"/>
+				<textFieldExpression><![CDATA[$F{DESCRIPCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="25" width="120" height="18" uuid="1f8f5f60-020a-407d-aa89-57534dbeb0e3"/>
+				<textFieldExpression><![CDATA[$F{ESTADO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="25" width="110" height="18" uuid="b01bef5d-2208-434e-8208-7169aeb3f417"/>
+				<textFieldExpression><![CDATA[$F{PROVEEDOR}]]></textFieldExpression>
+			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="-2" y="10" width="555" height="1" uuid="39f48c34-b6ee-47f7-8876-c3aaee1eb021"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="60" width="555" height="1" uuid="39f48c34-b6ee-47f7-8876-c3aaee1eb021"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
 		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch"/>
 	</detail>
 	<pageFooter>
 		<band height="20" splitType="Stretch">

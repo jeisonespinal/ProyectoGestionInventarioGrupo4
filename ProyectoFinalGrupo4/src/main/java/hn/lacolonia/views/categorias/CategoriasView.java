@@ -58,6 +58,7 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
 
     private NumberField idcategoria;
     private TextField nombre;
+    private TextField descripcion;
     private ComboBox<String> estado;
     private ComboBox<Proveedor> proveedor;
 
@@ -89,6 +90,7 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
         // Configure Grid
         grid.addColumn("idcategoria").setAutoWidth(true);
         grid.addColumn("nombre").setAutoWidth(true);
+        grid.addColumn("descripcion").setAutoWidth(true);
         grid.addColumn("estado").setAutoWidth(true);
         grid.addColumn("nombre_proveedor").setAutoWidth(true).setHeader("Proveedor");
 
@@ -119,6 +121,7 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
                     this.categoriaSeleccionada = new Categoria();
                     
                     this.categoriaSeleccionada.setNombre(nombre.getValue());
+                    this.categoriaSeleccionada.setDescripcion(descripcion.getValue());
                     this.categoriaSeleccionada.setEstado(estado.getValue());
                     this.categoriaSeleccionada.setProveedor(proveedor.getValue().getIdproveedor());
                     
@@ -128,6 +131,7 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
                 	//ACTUALIZACION
                 	this.categoriaSeleccionada.setIdcategoria(idcategoria.getValue().intValue());
                 	this.categoriaSeleccionada.setNombre(nombre.getValue());
+                	this.categoriaSeleccionada.setDescripcion(descripcion.getValue());
                     this.categoriaSeleccionada.setEstado(estado.getValue());
                     this.categoriaSeleccionada.setProveedor(proveedor.getValue().getIdproveedor());
                     
@@ -204,6 +208,10 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
         nombre.setId("txt_nombre");
         nombre.setPrefixComponent(VaadinIcon.LIST_UL.create());
         
+        descripcion = new TextField("Descripcion");
+        descripcion.setId("txt_descripcion");
+        descripcion.setPrefixComponent(VaadinIcon.FILE_TEXT_O.create());
+        
         estado = new ComboBox<>("Estado");
         estado.setItems("Activa", "Inactiva");
         estado.setId("cbo_estado");
@@ -214,7 +222,7 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
         proveedor.setPrefixComponent(VaadinIcon.TRUCK.create());
         proveedor.setItemLabelGenerator(Proveedor::getNombre);
         
-        formLayout.add(idcategoria, nombre, estado, proveedor);
+        formLayout.add(idcategoria, nombre, descripcion, estado, proveedor);
 
         editorDiv.add(formLayout);
         createButtonLayout(editorLayoutDiv);
@@ -259,6 +267,7 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
         if(value != null) {
         	idcategoria.setValue(Double.valueOf(value.getIdcategoria()));
             nombre.setValue(value.getNombre());
+            descripcion.setValue(value.getDescripcion());
             estado.setValue(value.getEstado());
             
             proveedorSeleccionado = buscarProveedor(value.getProveedor());
@@ -266,6 +275,7 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
         }else {
         	idcategoria.setValue(0.0);
             nombre.setValue("");
+            descripcion.setValue("");
             estado.setValue("");
             proveedor.clear();
 	    }

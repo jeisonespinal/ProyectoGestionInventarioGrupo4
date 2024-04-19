@@ -18,7 +18,7 @@
 	<field name="PRECIO" class="java.lang.Integer"/>
 	<field name="FECHA VENCIMIENTO" class="java.sql.Date"/>
 	<title>
-		<band height="76" splitType="Stretch">
+		<band height="67" splitType="Stretch">
 			<image>
 				<reportElement x="-20" y="0" width="595" height="64" uuid="223a90c7-c94a-49b1-aba4-ce6fb4bd7694"/>
 				<imageExpression><![CDATA["wood.jpg"]]></imageExpression>
@@ -39,7 +39,7 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="64" splitType="Stretch">
+		<band height="67" splitType="Stretch">
 			<staticText>
 				<reportElement x="-10" y="4" width="100" height="18" uuid="a5acf104-b009-4ef0-8085-08cc61ed9b50"/>
 				<textElement>
@@ -98,7 +98,7 @@
 				<textFieldExpression><![CDATA[$F{PRECIO}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="48" width="555" height="1" uuid="39f48c34-b6ee-47f7-8876-c3aaee1eb021"/>
+				<reportElement positionType="FixRelativeToBottom" x="3" y="60" width="555" height="1" uuid="39f48c34-b6ee-47f7-8876-c3aaee1eb021"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -110,7 +110,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="29" splitType="Stretch"/>
+		<band height="16" splitType="Stretch"/>
 	</detail>
 	<pageFooter>
 		<band height="20" splitType="Stretch">

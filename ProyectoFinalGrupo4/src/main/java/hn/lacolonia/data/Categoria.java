@@ -4,6 +4,7 @@ public class Categoria {
 
 	private int idcategoria;
     private String nombre;
+    private String descripcion;
     private String estado;
     private int proveedor;
     private String nombre_proveedor;
@@ -19,6 +20,12 @@ public class Categoria {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	public String getEstado() {
 		return estado;
