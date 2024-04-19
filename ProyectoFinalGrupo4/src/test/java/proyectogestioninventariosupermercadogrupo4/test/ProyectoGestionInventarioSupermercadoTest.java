@@ -22,7 +22,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
 import hn.lacolonia.data.Proveedor;
 
-//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProyectoGestionInventarioSupermercadoTest {
 	
 	@Test
@@ -108,7 +108,7 @@ public class ProyectoGestionInventarioSupermercadoTest {
 			WebElement campoFechavencimiento = driver.findElement(By.xpath("//vaadin-date-picker[@id='date_fechaVencimiento']/input"));
 			
 			// Ingresa el nombre de usuario
-			campoCodigo.sendKeys("1");
+			campoCodigo.sendKeys("5450566847");
 			campoNombre.sendKeys("Salchicha");
 			campoPrecio.sendKeys("84.90");
 			campoCategoria.sendKeys("Embutidos");
@@ -224,7 +224,7 @@ public class ProyectoGestionInventarioSupermercadoTest {
 	        
 			//botonEliminar.click();
 			
-			WebElement element = driver.findElement(By.id("btn_guardar"));
+			WebElement element = driver.findElement(By.id("btn_eliminar"));
 			Actions actions = new Actions(driver);
 			actions.moveToElement(element).click().build().perform();
 			botonEliminar.click();
