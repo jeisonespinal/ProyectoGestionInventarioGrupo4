@@ -54,10 +54,7 @@ import org.springframework.data.jpa.domain.Specification;
 @PageTitle("Proveedores")
 @Route(value = "proveedores", layout = MainLayout.class)
 @Uses(Icon.class)
-public class ProveedoresView extends Div implements /*BeforeEnterObserver*/ ViewModelProveedores {
-
-	/*private final String SUPPLIER_IDPROVEEDOR = "idproveedor";
-    private final String SUPPLIER_EDIT_ROUTE_TEMPLATE = "proveedores/%s/edit";*/
+public class ProveedoresView extends Div implements ViewModelProveedores {
     
     private Grid<Proveedor> grid = new Grid<>(Proveedor.class, false);
     
@@ -133,8 +130,10 @@ public class ProveedoresView extends Div implements /*BeforeEnterObserver*/ View
                 onSearch.run();
             });
             
+            
             Button searchBtn = new Button("Buscar", new Icon(VaadinIcon.SEARCH));
             searchBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+            searchBtn.setId("btn_guardar");
             searchBtn.addClickListener(e -> onSearch.run());
             
             Div actions = new Div(searchBtn, cancelBtn);
@@ -281,28 +280,4 @@ public class ProveedoresView extends Div implements /*BeforeEnterObserver*/ View
         this.controlador.consultarProveedores();
     }
 
-	/*@Override
-	public void beforeEnter(BeforeEnterEvent event) {
-		// TODO Auto-generated method stub
-		
-	}*/
-    
-    /*private void clearForm() {
-    	populateForm(null);
-	}*/
-    
-    /*private void populateForm(Proveedor value) {
-    	this.proveedorSeleccionado = value;
-    	if(value != null) {
-    		idproveedor.setValue(Double.valueOf(value.getIdproveedor()));
-    		nombre.setValue(value.getNombre());
-    		direccion.setValue(value.getDireccion());
-    		telefono.setValue(value.getTelefono());
-    	}else {
-    		idproveedor.setValue(0.0);
-    		nombre.setValue("");
-    		direccion.setValue("");
-    		telefono.setValue("");
-    	}
-    }*/
 }

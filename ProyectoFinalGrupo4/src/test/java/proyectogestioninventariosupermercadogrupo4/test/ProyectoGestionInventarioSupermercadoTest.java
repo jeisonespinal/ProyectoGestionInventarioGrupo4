@@ -321,20 +321,22 @@ public class ProyectoGestionInventarioSupermercadoTest {
 			
 			Thread.sleep(3000);
 			
+			// Localiza el campo de entrada de nombre de usuario
+			WebElement campoIdcategoria = driver.findElement(By.xpath("//vaadin-number-field[@id='txt_idcategoria']/input"));
+			WebElement campoNombre = driver.findElement(By.xpath("//vaadin-text-field[@id='txt_nombre']/input"));
+			WebElement campoDescripcion = driver.findElement(By.xpath("//vaadin-text-field[@id='txt_descripcion']/input"));
+			WebElement campoEstado = driver.findElement(By.xpath("//vaadin-combo-box[@id='cbo_estado']/input"));
+			WebElement campoProveedor = driver.findElement(By.xpath("//vaadin-combo-box[@id='cbo_proveedor']/input"));
+			
 			WebElement botonGuardar = driver.findElement(By.xpath("//vaadin-button[@id='btn_guardar']"));
 			WebElement botonCancelar = driver.findElement(By.xpath("//vaadin-button[@id='btn_cancelar']"));
 			WebElement botonEliminar = driver.findElement(By.xpath("//vaadin-button[@id='btn_eliminar']"));
 			
-			// Localiza el campo de entrada de nombre de usuario
-			WebElement campoIdcategoria = driver.findElement(By.xpath("//vaadin-number-field[@id='txt_idcategoria']/input"));
-			WebElement campoNombre = driver.findElement(By.xpath("//vaadin-text-field[@id='txt_nombre']/input"));
-			WebElement campoEstado = driver.findElement(By.xpath("//vaadin-combo-box[@id='cbo_estado']/input"));
-			WebElement campoProveedor = driver.findElement(By.xpath("//vaadin-combo-box[@id='cbo_proveedor']/input"));
-			
 			// Ingresa el nombre de usuario
-			campoIdcategoria.sendKeys("1");
+			campoIdcategoria.sendKeys("81");
 			campoNombre.sendKeys("Embutidos");
-			campoEstado.sendKeys("Activa");
+			campoDescripcion.sendKeys("Incluye diferentes productos como la leche, queso, matequilla ");
+			campoEstado.sendKeys("Inactiva");
 			campoProveedor.sendKeys("OLACSA");
 	        
 			Thread.sleep(3000);
