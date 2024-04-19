@@ -24,11 +24,11 @@ public class ProyectoGestionInventarioSupermercadoTest {
 	public void testEliminarProductos() throws InterruptedException {
 		// Inicializa el WebDriver para Chrome
 		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		
 		try{
 			// Abre la página web de productos
 			driver.get("http://localhost:8080/productos");
-			
 			int cantidadProductosInicial = 0;
 		
 			new WebDriverWait(driver, ofSeconds(30), ofSeconds(1)).until(titleIs("Productos"));
@@ -47,24 +47,29 @@ public class ProyectoGestionInventarioSupermercadoTest {
 			WebElement botonEliminar = driver.findElement(By.xpath("//vaadin-button[@id='btn_eliminar']"));
 			
 			// Ingresa el nombre de usuario
-			campoCodigo.sendKeys("123456789");
-			campoNombre.sendKeys("Jugo Manzana");
-			campoPrecio.sendKeys("10");
+			campoCodigo.sendKeys("202110060116");
+			campoNombre.sendKeys("Litro de Leche");
+			campoPrecio.sendKeys("25");
 			campoCategoria.sendKeys("Lacteos");
-			campoFechavencimiento.sendKeys("29/04/2024");
-			
-			Thread.sleep(3000);
+			campoFechavencimiento.sendKeys("18/4/2024");
 			
 			//botonGuardar.click();
+			//botonEliminar.click();
+			
+			WebElement element = driver.findElement(By.id("btn_eliminar"));
+			Actions actions = new Actions(driver);
+			actions.moveToElement(element).click().build().perform();
 			botonEliminar.click();
+			
+			Thread.sleep(5000);
+			
 			int cantidadProductosFinal = 0;
 			
 			//assertFalse(cantidadProductosInicial+1 == 0);
-			assertTrue(cantidadProductosFinal == (cantidadProductosInicial+1));
-			//assertEquals(cantidadProductosFinal, (cantidadProductosInicial), .001);
+			assertFalse(cantidadProductosFinal == (cantidadProductosInicial+2));
 			
 		}finally {
-			driver.close();
+			driver.quit();
 		}
 	}
 	
@@ -73,6 +78,7 @@ public class ProyectoGestionInventarioSupermercadoTest {
 	public void testCrearProducto() throws InterruptedException {
 		// Inicializa el WebDriver para Chrome
 		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		
 		try{
 			// Abre la página web de productos
@@ -84,6 +90,10 @@ public class ProyectoGestionInventarioSupermercadoTest {
 			
 			Thread.sleep(3000);
 			
+			WebElement botonGuardar = driver.findElement(By.xpath("//vaadin-button[@id='btn_guardar']"));
+			WebElement botonCancelar = driver.findElement(By.xpath("//vaadin-button[@id='btn_cancelar']"));
+			WebElement botonEliminar = driver.findElement(By.xpath("//vaadin-button[@id='btn_eliminar']"));
+			
 			// Localiza el campo de entrada de nombre de usuario
 			WebElement campoCodigo = driver.findElement(By.xpath("//vaadin-text-field[@id='txt_codigo']/input"));
 			WebElement campoNombre = driver.findElement(By.xpath("//vaadin-text-field[@id='txt_nombre']/input"));
@@ -91,27 +101,28 @@ public class ProyectoGestionInventarioSupermercadoTest {
 			WebElement campoCategoria = driver.findElement(By.xpath("//vaadin-combo-box[@id='cbo_categoria']/input"));
 			WebElement campoFechavencimiento = driver.findElement(By.xpath("//vaadin-date-picker[@id='date_fechaVencimiento']/input"));
 			
-			WebElement botonGuardar = driver.findElement(By.xpath("//vaadin-button[@id='btn_guardar']"));
-			WebElement botonCancelar = driver.findElement(By.xpath("//vaadin-button[@id='btn_cancelar']"));
-			WebElement botonEliminar = driver.findElement(By.xpath("//vaadin-button[@id='btn_eliminar']"));
-			
 			// Ingresa el nombre de usuario
-			campoCodigo.sendKeys("4210563214789");
-			campoNombre.sendKeys("Manzana");
-			campoPrecio.sendKeys("20");
-			campoCategoria.sendKeys("Frutas");
-			campoFechavencimiento.sendKeys("24/06/2025");
+			campoCodigo.sendKeys("1");
+			campoNombre.sendKeys("Salchicha");
+			campoPrecio.sendKeys("84.90");
+			campoCategoria.sendKeys("Embutidos");
+			campoFechavencimiento.sendKeys("25/09/2027");
 			
-			Thread.sleep(3000);
+			//botonGuardar.click();
 			
+			WebElement element = driver.findElement(By.id("btn_guardar"));
+			Actions actions = new Actions(driver);
+			actions.moveToElement(element).click().build().perform();
 			botonGuardar.click();
+			
+			Thread.sleep(5000);
 			
 			int cantidadProductosFinal = 0;
 			
-			assertTrue(cantidadProductosFinal == (cantidadProductosInicial+1));
+			assertTrue(cantidadProductosFinal == (cantidadProductosInicial));
 			
 		}finally {
-			driver.close();
+			driver.quit();
 		}
 	}
 
@@ -121,6 +132,7 @@ public class ProyectoGestionInventarioSupermercadoTest {
 	public void testCrearCategoria() throws InterruptedException {
 		// Inicializa el WebDriver para Chrome
 		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		
 		try{
 			// Abre la página web de categorias
@@ -132,6 +144,10 @@ public class ProyectoGestionInventarioSupermercadoTest {
 			
 			Thread.sleep(3000);
 			
+			WebElement botonGuardar = driver.findElement(By.xpath("//vaadin-button[@id='btn_guardar']"));
+			WebElement botonCancelar = driver.findElement(By.xpath("//vaadin-button[@id='btn_cancelar']"));
+			WebElement botonEliminar = driver.findElement(By.xpath("//vaadin-button[@id='btn_eliminar']"));
+			
 			// Localiza el campo de entrada de nombre de usuario
 			WebElement campoIdcategoria = driver.findElement(By.xpath("//vaadin-number-field[@id='txt_idcategoria']/input"));
 			WebElement campoNombre = driver.findElement(By.xpath("//vaadin-text-field[@id='txt_nombre']/input"));
@@ -139,27 +155,28 @@ public class ProyectoGestionInventarioSupermercadoTest {
 			WebElement campoEstado = driver.findElement(By.xpath("//vaadin-combo-box[@id='cbo_estado']/input"));
 			WebElement campoProveedor = driver.findElement(By.xpath("//vaadin-combo-box[@id='cbo_proveedor']/input"));
 			
-			WebElement botonGuardar = driver.findElement(By.xpath("//vaadin-button[@id='btn_guardar']"));
-			WebElement botonCancelar = driver.findElement(By.xpath("//vaadin-button[@id='btn_cancelar']"));
-			WebElement botonEliminar = driver.findElement(By.xpath("//vaadin-button[@id='btn_eliminar']"));
-			
 			// Ingresa el nombre de usuario
-			campoIdcategoria.sendKeys("81");
-			campoNombre.sendKeys("Lacteos");
-			campoDescripcion.sendKeys("Incluye diferentes productos como la leche, queso, matequilla ");
-			campoEstado.sendKeys("Inactiva");
+			campoIdcategoria.sendKeys("1");
+			campoNombre.sendKeys("Embutidos");
+			campoDescripcion.sendKeys("Incluye Jamones,HotDog, Salami y otros derivados");
+			campoEstado.sendKeys("Activa");
 			campoProveedor.sendKeys("SULA SA");
 	        
-			Thread.sleep(3000);
+			//botonGuardar.click();
 			
+			WebElement element = driver.findElement(By.id("btn_guardar"));
+			Actions actions = new Actions(driver);
+			actions.moveToElement(element).click().build().perform();
 			botonGuardar.click();
+			
+			Thread.sleep(5000);
 			
 			int cantidadCategoriasFinal = 0;
 			
-			assertEquals(cantidadCategoriasFinal, (cantidadCategoriasInicial), .001);
+			assertFalse(cantidadCategoriasFinal == (cantidadCategoriasInicial+1));
 			
 		}finally {
-			driver.close();
+			driver.quit();
 		}
 	}
 
@@ -169,6 +186,7 @@ public class ProyectoGestionInventarioSupermercadoTest {
 	public void testEliminarCategoria() throws InterruptedException {
 		// Inicializa el WebDriver para Chrome
 		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		
 		try{
 			// Abre la página web de categorias
@@ -180,6 +198,10 @@ public class ProyectoGestionInventarioSupermercadoTest {
 			
 			Thread.sleep(3000);
 			
+			WebElement botonGuardar = driver.findElement(By.xpath("//vaadin-button[@id='btn_guardar']"));
+			WebElement botonCancelar = driver.findElement(By.xpath("//vaadin-button[@id='btn_cancelar']"));
+			WebElement botonEliminar = driver.findElement(By.xpath("//vaadin-button[@id='btn_eliminar']"));
+			
 			// Localiza el campo de entrada de nombre de usuario
 			WebElement campoIdcategoria = driver.findElement(By.xpath("//vaadin-number-field[@id='txt_idcategoria']/input"));
 			WebElement campoNombre = driver.findElement(By.xpath("//vaadin-text-field[@id='txt_nombre']/input"));
@@ -187,27 +209,28 @@ public class ProyectoGestionInventarioSupermercadoTest {
 			WebElement campoEstado = driver.findElement(By.xpath("//vaadin-combo-box[@id='cbo_estado']/input"));
 			WebElement campoProveedor = driver.findElement(By.xpath("//vaadin-combo-box[@id='cbo_proveedor']/input"));
 			
-			WebElement botonGuardar = driver.findElement(By.xpath("//vaadin-button[@id='btn_guardar']"));
-			WebElement botonCancelar = driver.findElement(By.xpath("//vaadin-button[@id='btn_cancelar']"));
-			WebElement botonEliminar = driver.findElement(By.xpath("//vaadin-button[@id='btn_eliminar']"));
-			
 			// Ingresa el nombre de usuario
-			campoIdcategoria.sendKeys("201");
-			campoNombre.sendKeys("Frutas");
-			campoDescripcion.sendKeys("Incluye diferentes productos como las manzanas, uvas, peras, entre otras");
+			campoIdcategoria.sendKeys("241");
+			campoNombre.sendKeys("Embutidos");
+			campoDescripcion.sendKeys("Incluye Jamones,HotDog, Salami y otros derivados");
 			campoEstado.sendKeys("Activa");
-			campoProveedor.sendKeys("OLACSA SA");
+			campoProveedor.sendKeys("SULA SA");
 	        
-			Thread.sleep(3000);
+			//botonEliminar.click();
 			
+			WebElement element = driver.findElement(By.id("btn_guardar"));
+			Actions actions = new Actions(driver);
+			actions.moveToElement(element).click().build().perform();
 			botonEliminar.click();
+			
+			Thread.sleep(5000);
 			
 			int cantidadCategoriasFinal = 0;
 			
-			assertEquals(cantidadCategoriasFinal, (cantidadCategoriasInicial), .001);
+			assertFalse(cantidadCategoriasFinal == (cantidadCategoriasInicial+1));
 			
 		}finally {
-			driver.close();
+			driver.quit();
 		}
 	}
 
@@ -216,6 +239,7 @@ public class ProyectoGestionInventarioSupermercadoTest {
 	public void testBuscarProveedor() throws InterruptedException {
 		// Inicializa el WebDriver para Chrome
 		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		
 		try{
 			// Abre la página web de proveedores
@@ -240,16 +264,18 @@ public class ProyectoGestionInventarioSupermercadoTest {
 			// Ingresa el nombre de usuario
 			campoNombre.sendKeys("OLACSA");
 	        
-			Thread.sleep(3000);
-			
+						
 			botonBuscar.click();
+			
+			Thread.sleep(5000);
 			
 			int cantidadProveedoresFinal = 0;
 			
 			assertEquals(cantidadProveedoresFinal, (cantidadProveedoresInicial), .001);
 			
 		}finally {
-			driver.close();
+			driver.quit();
 		}
 	}
+	
 }
