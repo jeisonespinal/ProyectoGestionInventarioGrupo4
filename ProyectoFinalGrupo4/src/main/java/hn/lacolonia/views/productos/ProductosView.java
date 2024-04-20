@@ -121,9 +121,6 @@ public class ProductosView extends Div implements BeforeEnterObserver, ViewModel
         
         GridContextMenu<Producto> menu = grid.addContextMenu();
         GridMenuItem<Producto> assign = menu.addItem("Exportar");
-        GridMenuItem<Producto> menueliminar = menu.addItem("Eliminar");
-        menueliminar.addMenuItemClickListener( e -> {	
-        });
         
         //assign.addComponentAsFirst(createIcon(VaadinIcon.FILE_REFRESH));
         

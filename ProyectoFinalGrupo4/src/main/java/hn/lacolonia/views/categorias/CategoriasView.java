@@ -119,9 +119,6 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
         
         GridContextMenu<Categoria> menu = grid.addContextMenu();
         GridMenuItem<Categoria> assign = menu.addItem("Exportar");
-        GridMenuItem<Categoria> menueliminar = menu.addItem("Eliminar");
-        menueliminar.addMenuItemClickListener( e -> {
-        });
         
         //assign.addComponentAsFirst(createIcon(VaadinIcon.FILE_REFRESH));
         
