@@ -153,16 +153,16 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="133" splitType="Stretch">
+		<band height="177" splitType="Stretch">
 			<image hAlign="Center">
-				<reportElement x="234" y="19" width="90" height="75" uuid="364e0e59-a555-461d-91c3-fb6cdff36e64"/>
+				<reportElement x="234" y="76" width="90" height="75" uuid="364e0e59-a555-461d-91c3-fb6cdff36e64"/>
 				<imageExpression><![CDATA[$P{FIRMA}]]></imageExpression>
 			</image>
 			<line>
-				<reportElement x="188" y="88" width="183" height="1" uuid="e0236131-2d26-4887-a93b-c0e9c0e1e35b"/>
+				<reportElement x="188" y="145" width="183" height="1" uuid="e0236131-2d26-4887-a93b-c0e9c0e1e35b"/>
 			</line>
 			<staticText>
-				<reportElement x="180" y="94" width="200" height="18" uuid="9a2f47a3-34e9-4e92-bed7-42463be5e1cf"/>
+				<reportElement x="180" y="151" width="200" height="18" uuid="9a2f47a3-34e9-4e92-bed7-42463be5e1cf"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
 					<font size="12" isBold="true" isItalic="true"/>
 				</textElement>
