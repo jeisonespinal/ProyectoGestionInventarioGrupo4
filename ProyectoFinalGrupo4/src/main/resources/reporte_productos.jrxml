@@ -10,6 +10,7 @@
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
 	<parameter name="FIRMA" class="java.lang.String"/>
+	<parameter name="LACOLONIA" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -19,7 +20,7 @@
 	<field name="CATEGORIA" class="java.lang.String"/>
 	<field name="FECHA VENCIMIENTO" class="java.lang.String"/>
 	<title>
-		<band height="67" splitType="Stretch">
+		<band height="77" splitType="Stretch">
 			<image>
 				<reportElement mode="Opaque" x="-20" y="0" width="595" height="64" uuid="223a90c7-c94a-49b1-aba4-ce6fb4bd7694"/>
 				<imageExpression><![CDATA["wood.jpg"]]></imageExpression>
@@ -37,6 +38,10 @@
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Productos registrados en el sistema]]></text>
 			</staticText>
+			<image hAlign="Center">
+				<reportElement x="450" y="4" width="123" height="55" uuid="a0624676-5df0-4f1a-a642-ea9e29edc51a"/>
+				<imageExpression><![CDATA[$P{LACOLONIA}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

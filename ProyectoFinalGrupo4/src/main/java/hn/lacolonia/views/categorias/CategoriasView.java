@@ -180,7 +180,7 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
         		this.controlador.eliminarCategorias(categoriaSeleccionada.getIdcategoria());
         		 clearForm();
                  refreshGrid();
-                 UI.getCurrent().navigate(ProductosView.class);
+                 UI.getCurrent().navigate(CategoriasView.class);
         	}
         });
     }
@@ -194,6 +194,12 @@ public class CategoriasView extends Div implements BeforeEnterObserver, ViewMode
     		parameters.put("FIRMA", "firma1.png");
     	}else {
     		parameters.put("FIRMA", "firma2.png");
+    	}
+    	
+    	if(elementos.size() % 2 == 0) {
+    		parameters.put("LACOLONIA", "lacolonia.png");
+    	}else {
+    		parameters.put("LACOLONIA", "lacolonia.png");
     	}
     	
     	boolean generado = generador.generarReportePDF("reporte_categorias", parameters, datasource);

@@ -198,6 +198,12 @@ public class ProductosView extends Div implements BeforeEnterObserver, ViewModel
     		parameters.put("FIRMA", "firma2.png");
     	}
     	
+    	if(elementos.size() % 2 == 0) {
+    		parameters.put("LACOLONIA", "lacolonia.png");
+    	}else {
+    		parameters.put("LACOLONIA", "lacolonia.png");
+    	}
+    	
     	boolean generado = generador.generarReportePDF("reporte_productos", parameters, datasource);
     	if(generado) {
     		String ubicacion = generador.getReportPath();

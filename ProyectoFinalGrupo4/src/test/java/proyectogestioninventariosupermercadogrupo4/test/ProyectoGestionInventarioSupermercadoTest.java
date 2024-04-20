@@ -108,7 +108,7 @@ public class ProyectoGestionInventarioSupermercadoTest {
 			WebElement campoFechavencimiento = driver.findElement(By.xpath("//vaadin-date-picker[@id='date_fechaVencimiento']/input"));
 			
 			// Ingresa el nombre de usuario
-			campoCodigo.sendKeys("5450566847");
+			campoCodigo.sendKeys("10235689");
 			campoNombre.sendKeys("Salchicha");
 			campoPrecio.sendKeys("84.90");
 			campoCategoria.sendKeys("Embutidos");

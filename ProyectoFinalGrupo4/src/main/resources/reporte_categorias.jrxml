@@ -10,6 +10,7 @@
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
 	<parameter name="FIRMA" class="java.lang.String"/>
+	<parameter name="LACOLONIA" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -39,6 +40,10 @@
 			<rectangle>
 				<reportElement mode="Opaque" x="-20" y="5" width="593" height="55" forecolor="#FFFFFF" backcolor="rgba(74, 240, 143, 0.37254903)" uuid="4c74c71c-0a1a-4faf-bc16-0a88a8f8785d"/>
 			</rectangle>
+			<image hAlign="Center">
+				<reportElement x="450" y="4" width="123" height="55" uuid="46079774-4faf-471f-b3f4-aad265b7bcac"/>
+				<imageExpression><![CDATA[$P{LACOLONIA}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
